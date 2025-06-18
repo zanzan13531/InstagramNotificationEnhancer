@@ -43,6 +43,40 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/disabled_notification_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFF9C4"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notifications Disabled"
+            android:textColor="#4E342E"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To see reclassified messages, you must allow this app to send notifications."
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/enable_notifications_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Enable in Settings"/>
+
+    </LinearLayout>
+    <LinearLayout
         android:id="@+id/app_list_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
