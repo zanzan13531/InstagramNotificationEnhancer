@@ -1,0 +1,1 @@
+instagram doesn't currently provide a group profile picture for groups in their notifications, so i just routed the current profile picture to the icon. but it can also be routed as the icon image for the person
