@@ -11,6 +11,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.Person
 import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
+import androidx.core.graphics.drawable.IconCompat
 
 class GeneralNotificationListener : NotificationListenerService() {
 
@@ -101,9 +102,10 @@ class GeneralNotificationListener : NotificationListenerService() {
         val shortcutPerson = Person.Builder().setName(conversationTitle).build()
         val shortcut = ShortcutInfoCompat.Builder(this, shortcutId).setLongLived(true).setShortLabel(conversationTitle).setPerson(shortcutPerson).setIntent(launchIntent!!).build()
         ShortcutManagerCompat.pushDynamicShortcut(this, shortcut)
-
+//        sbn.notification.getLargeIcon()
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_reclassified_notification)
+            .setSmallIcon(IconCompat.createFromIcon(this, sbn.notification.smallIcon)!!)
+            .setLargeIcon(sbn.notification.getLargeIcon())
             .setStyle(messagingStyle)
             .setShortcutId(shortcutId)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -111,7 +113,7 @@ class GeneralNotificationListener : NotificationListenerService() {
 
         try {
             NotificationManagerCompat.from(this).notify(constantNotificationId, builder.build())
-            cancelNotification(sbn.key)
+//            cancelNotification(sbn.key)
         } catch (e: SecurityException) {
             Log.e(TAG, "SecurityException: Failed to post notification. Error: ${e.message}")
         }
